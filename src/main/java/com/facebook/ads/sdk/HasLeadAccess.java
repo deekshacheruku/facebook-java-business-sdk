@@ -39,33 +39,39 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class MessengerDestinationPageWelcomeMessage extends APINode {
-  @SerializedName("id")
-  private String mId = null;
-  @SerializedName("page_welcome_message_body")
-  private String mPageWelcomeMessageBody = null;
-  @SerializedName("page_welcome_message_type")
-  private String mPageWelcomeMessageType = null;
-  @SerializedName("template_name")
-  private String mTemplateName = null;
-  @SerializedName("time_created")
-  private String mTimeCreated = null;
-  @SerializedName("time_last_used")
-  private String mTimeLastUsed = null;
+public class HasLeadAccess extends APINode {
+  @SerializedName("app_has_leads_permission")
+  private Boolean mAppHasLeadsPermission = null;
+  @SerializedName("can_access_lead")
+  private Boolean mCanAccessLead = null;
+  @SerializedName("enabled_lead_access_manager")
+  private Boolean mEnabledLeadAccessManager = null;
+  @SerializedName("failure_reason")
+  private String mFailureReason = null;
+  @SerializedName("failure_resolution")
+  private String mFailureResolution = null;
+  @SerializedName("is_page_admin")
+  private Boolean mIsPageAdmin = null;
+  @SerializedName("page_id")
+  private String mPageId = null;
+  @SerializedName("user_has_leads_permission")
+  private Boolean mUserHasLeadsPermission = null;
+  @SerializedName("user_id")
+  private String mUserId = null;
   protected static Gson gson = null;
 
-  public MessengerDestinationPageWelcomeMessage() {
+  public HasLeadAccess() {
   }
 
   public String getId() {
-    return getFieldId().toString();
+    return null;
   }
-  public static MessengerDestinationPageWelcomeMessage loadJSON(String json, APIContext context, String header) {
-    MessengerDestinationPageWelcomeMessage messengerDestinationPageWelcomeMessage = getGson().fromJson(json, MessengerDestinationPageWelcomeMessage.class);
+  public static HasLeadAccess loadJSON(String json, APIContext context, String header) {
+    HasLeadAccess hasLeadAccess = getGson().fromJson(json, HasLeadAccess.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(messengerDestinationPageWelcomeMessage.toString());
+      JsonElement o2 = parser.parse(hasLeadAccess.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -75,14 +81,14 @@ public class MessengerDestinationPageWelcomeMessage extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    messengerDestinationPageWelcomeMessage.context = context;
-    messengerDestinationPageWelcomeMessage.rawValue = json;
-    messengerDestinationPageWelcomeMessage.header = header;
-    return messengerDestinationPageWelcomeMessage;
+    hasLeadAccess.context = context;
+    hasLeadAccess.rawValue = json;
+    hasLeadAccess.header = header;
+    return hasLeadAccess;
   }
 
-  public static APINodeList<MessengerDestinationPageWelcomeMessage> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<MessengerDestinationPageWelcomeMessage> messengerDestinationPageWelcomeMessages = new APINodeList<MessengerDestinationPageWelcomeMessage>(request, json, header);
+  public static APINodeList<HasLeadAccess> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<HasLeadAccess> hasLeadAccesss = new APINodeList<HasLeadAccess>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -93,9 +99,9 @@ public class MessengerDestinationPageWelcomeMessage extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          messengerDestinationPageWelcomeMessages.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          hasLeadAccesss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return messengerDestinationPageWelcomeMessages;
+        return hasLeadAccesss;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -105,20 +111,20 @@ public class MessengerDestinationPageWelcomeMessage extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                messengerDestinationPageWelcomeMessages.setCursors(before, after);
+                hasLeadAccesss.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            messengerDestinationPageWelcomeMessages.setPaging(previous, next);
+            hasLeadAccesss.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              messengerDestinationPageWelcomeMessages.setAppSecret(context.getAppSecretProof());
+              hasLeadAccesss.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              messengerDestinationPageWelcomeMessages.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              hasLeadAccesss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -129,23 +135,23 @@ public class MessengerDestinationPageWelcomeMessage extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  messengerDestinationPageWelcomeMessages.add(loadJSON(entry.getValue().toString(), context, header));
+                  hasLeadAccesss.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              messengerDestinationPageWelcomeMessages.add(loadJSON(obj.toString(), context, header));
+              hasLeadAccesss.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return messengerDestinationPageWelcomeMessages;
+          return hasLeadAccesss;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              messengerDestinationPageWelcomeMessages.add(loadJSON(entry.getValue().toString(), context, header));
+              hasLeadAccesss.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return messengerDestinationPageWelcomeMessages;
+          return hasLeadAccesss;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -162,20 +168,20 @@ public class MessengerDestinationPageWelcomeMessage extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              messengerDestinationPageWelcomeMessages.add(loadJSON(value.toString(), context, header));
+              hasLeadAccesss.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return messengerDestinationPageWelcomeMessages;
+            return hasLeadAccesss;
           }
 
           // Sixth, check if it's pure JsonObject
-          messengerDestinationPageWelcomeMessages.clear();
-          messengerDestinationPageWelcomeMessages.add(loadJSON(json, context, header));
-          return messengerDestinationPageWelcomeMessages;
+          hasLeadAccesss.clear();
+          hasLeadAccesss.add(loadJSON(json, context, header));
+          return hasLeadAccesss;
         }
       }
     } catch (Exception e) {
@@ -203,57 +209,84 @@ public class MessengerDestinationPageWelcomeMessage extends APINode {
   }
 
 
-  public String getFieldId() {
-    return mId;
+  public Boolean getFieldAppHasLeadsPermission() {
+    return mAppHasLeadsPermission;
   }
 
-  public MessengerDestinationPageWelcomeMessage setFieldId(String value) {
-    this.mId = value;
+  public HasLeadAccess setFieldAppHasLeadsPermission(Boolean value) {
+    this.mAppHasLeadsPermission = value;
     return this;
   }
 
-  public String getFieldPageWelcomeMessageBody() {
-    return mPageWelcomeMessageBody;
+  public Boolean getFieldCanAccessLead() {
+    return mCanAccessLead;
   }
 
-  public MessengerDestinationPageWelcomeMessage setFieldPageWelcomeMessageBody(String value) {
-    this.mPageWelcomeMessageBody = value;
+  public HasLeadAccess setFieldCanAccessLead(Boolean value) {
+    this.mCanAccessLead = value;
     return this;
   }
 
-  public String getFieldPageWelcomeMessageType() {
-    return mPageWelcomeMessageType;
+  public Boolean getFieldEnabledLeadAccessManager() {
+    return mEnabledLeadAccessManager;
   }
 
-  public MessengerDestinationPageWelcomeMessage setFieldPageWelcomeMessageType(String value) {
-    this.mPageWelcomeMessageType = value;
+  public HasLeadAccess setFieldEnabledLeadAccessManager(Boolean value) {
+    this.mEnabledLeadAccessManager = value;
     return this;
   }
 
-  public String getFieldTemplateName() {
-    return mTemplateName;
+  public String getFieldFailureReason() {
+    return mFailureReason;
   }
 
-  public MessengerDestinationPageWelcomeMessage setFieldTemplateName(String value) {
-    this.mTemplateName = value;
+  public HasLeadAccess setFieldFailureReason(String value) {
+    this.mFailureReason = value;
     return this;
   }
 
-  public String getFieldTimeCreated() {
-    return mTimeCreated;
+  public String getFieldFailureResolution() {
+    return mFailureResolution;
   }
 
-  public MessengerDestinationPageWelcomeMessage setFieldTimeCreated(String value) {
-    this.mTimeCreated = value;
+  public HasLeadAccess setFieldFailureResolution(String value) {
+    this.mFailureResolution = value;
     return this;
   }
 
-  public String getFieldTimeLastUsed() {
-    return mTimeLastUsed;
+  public Boolean getFieldIsPageAdmin() {
+    return mIsPageAdmin;
   }
 
-  public MessengerDestinationPageWelcomeMessage setFieldTimeLastUsed(String value) {
-    this.mTimeLastUsed = value;
+  public HasLeadAccess setFieldIsPageAdmin(Boolean value) {
+    this.mIsPageAdmin = value;
+    return this;
+  }
+
+  public String getFieldPageId() {
+    return mPageId;
+  }
+
+  public HasLeadAccess setFieldPageId(String value) {
+    this.mPageId = value;
+    return this;
+  }
+
+  public Boolean getFieldUserHasLeadsPermission() {
+    return mUserHasLeadsPermission;
+  }
+
+  public HasLeadAccess setFieldUserHasLeadsPermission(Boolean value) {
+    this.mUserHasLeadsPermission = value;
+    return this;
+  }
+
+  public String getFieldUserId() {
+    return mUserId;
+  }
+
+  public HasLeadAccess setFieldUserId(String value) {
+    this.mUserId = value;
     return this;
   }
 
@@ -273,22 +306,25 @@ public class MessengerDestinationPageWelcomeMessage extends APINode {
     return gson;
   }
 
-  public MessengerDestinationPageWelcomeMessage copyFrom(MessengerDestinationPageWelcomeMessage instance) {
-    this.mId = instance.mId;
-    this.mPageWelcomeMessageBody = instance.mPageWelcomeMessageBody;
-    this.mPageWelcomeMessageType = instance.mPageWelcomeMessageType;
-    this.mTemplateName = instance.mTemplateName;
-    this.mTimeCreated = instance.mTimeCreated;
-    this.mTimeLastUsed = instance.mTimeLastUsed;
+  public HasLeadAccess copyFrom(HasLeadAccess instance) {
+    this.mAppHasLeadsPermission = instance.mAppHasLeadsPermission;
+    this.mCanAccessLead = instance.mCanAccessLead;
+    this.mEnabledLeadAccessManager = instance.mEnabledLeadAccessManager;
+    this.mFailureReason = instance.mFailureReason;
+    this.mFailureResolution = instance.mFailureResolution;
+    this.mIsPageAdmin = instance.mIsPageAdmin;
+    this.mPageId = instance.mPageId;
+    this.mUserHasLeadsPermission = instance.mUserHasLeadsPermission;
+    this.mUserId = instance.mUserId;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<MessengerDestinationPageWelcomeMessage> getParser() {
-    return new APIRequest.ResponseParser<MessengerDestinationPageWelcomeMessage>() {
-      public APINodeList<MessengerDestinationPageWelcomeMessage> parseResponse(String response, APIContext context, APIRequest<MessengerDestinationPageWelcomeMessage> request, String header) throws MalformedResponseException {
-        return MessengerDestinationPageWelcomeMessage.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<HasLeadAccess> getParser() {
+    return new APIRequest.ResponseParser<HasLeadAccess>() {
+      public APINodeList<HasLeadAccess> parseResponse(String response, APIContext context, APIRequest<HasLeadAccess> request, String header) throws MalformedResponseException {
+        return HasLeadAccess.parseResponse(response, context, request, header);
       }
     };
   }

@@ -52,6 +52,8 @@ public class WhatsAppBusinessAccount extends APINode {
   private Long mCreationTime = null;
   @SerializedName("currency")
   private String mCurrency = null;
+  @SerializedName("health_status")
+  private Object mHealthStatus = null;
   @SerializedName("id")
   private String mId = null;
   @SerializedName("is_enabled_for_insights")
@@ -305,14 +307,6 @@ public class WhatsAppBusinessAccount extends APINode {
     return new APIRequestGetConversationAnalytics(this.getPrefixedId().toString(), context);
   }
 
-  public APIRequestGetExtensions getExtensions() {
-    return new APIRequestGetExtensions(this.getPrefixedId().toString(), context);
-  }
-
-  public APIRequestCreateExtension createExtension() {
-    return new APIRequestCreateExtension(this.getPrefixedId().toString(), context);
-  }
-
   public APIRequestGetFlows getFlows() {
     return new APIRequestGetFlows(this.getPrefixedId().toString(), context);
   }
@@ -424,6 +418,10 @@ public class WhatsAppBusinessAccount extends APINode {
 
   public String getFieldCurrency() {
     return mCurrency;
+  }
+
+  public Object getFieldHealthStatus() {
+    return mHealthStatus;
   }
 
   public String getFieldId() {
@@ -1167,238 +1165,6 @@ public class WhatsAppBusinessAccount extends APINode {
 
   }
 
-  public static class APIRequestGetExtensions extends APIRequest<APINode> {
-
-    APINodeList<APINode> lastResponse = null;
-    @Override
-    public APINodeList<APINode> getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public APINodeList<APINode> parseResponse(String response, String header) throws APIException {
-      return APINode.parseResponse(response, getContext(), this, header);
-    }
-
-    @Override
-    public APINodeList<APINode> execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINodeList<APINode> execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(),rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINodeList<APINode>> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINodeList<APINode>>() {
-           public APINodeList<APINode> apply(ResponseWrapper result) {
-             try {
-               return APIRequestGetExtensions.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestGetExtensions(String nodeId, APIContext context) {
-      super(context, nodeId, "/extensions", "GET", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestGetExtensions setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetExtensions setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestGetExtensions requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestGetExtensions requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetExtensions requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestGetExtensions requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestGetExtensions requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestGetExtensions requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-  }
-
-  public static class APIRequestCreateExtension extends APIRequest<APINode> {
-
-    APINode lastResponse = null;
-    @Override
-    public APINode getLastResponse() {
-      return lastResponse;
-    }
-    public static final String[] PARAMS = {
-      "clone_extension_id",
-      "clone_template",
-      "data_channel_uri",
-      "name",
-    };
-
-    public static final String[] FIELDS = {
-    };
-
-    @Override
-    public APINode parseResponse(String response, String header) throws APIException {
-      return APINode.parseResponse(response, getContext(), this, header).head();
-    }
-
-    @Override
-    public APINode execute() throws APIException {
-      return execute(new HashMap<String, Object>());
-    }
-
-    @Override
-    public APINode execute(Map<String, Object> extraParams) throws APIException {
-      ResponseWrapper rw = executeInternal(extraParams);
-      lastResponse = parseResponse(rw.getBody(), rw.getHeader());
-      return lastResponse;
-    }
-
-    public ListenableFuture<APINode> executeAsync() throws APIException {
-      return executeAsync(new HashMap<String, Object>());
-    };
-
-    public ListenableFuture<APINode> executeAsync(Map<String, Object> extraParams) throws APIException {
-      return Futures.transform(
-        executeAsyncInternal(extraParams),
-        new Function<ResponseWrapper, APINode>() {
-           public APINode apply(ResponseWrapper result) {
-             try {
-               return APIRequestCreateExtension.this.parseResponse(result.getBody(), result.getHeader());
-             } catch (Exception e) {
-               throw new RuntimeException(e);
-             }
-           }
-         }
-      );
-    };
-
-    public APIRequestCreateExtension(String nodeId, APIContext context) {
-      super(context, nodeId, "/extensions", "POST", Arrays.asList(PARAMS));
-    }
-
-    @Override
-    public APIRequestCreateExtension setParam(String param, Object value) {
-      setParamInternal(param, value);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateExtension setParams(Map<String, Object> params) {
-      setParamsInternal(params);
-      return this;
-    }
-
-
-    public APIRequestCreateExtension setCloneExtensionId (String cloneExtensionId) {
-      this.setParam("clone_extension_id", cloneExtensionId);
-      return this;
-    }
-
-    public APIRequestCreateExtension setCloneTemplate (String cloneTemplate) {
-      this.setParam("clone_template", cloneTemplate);
-      return this;
-    }
-
-    public APIRequestCreateExtension setDataChannelUri (String dataChannelUri) {
-      this.setParam("data_channel_uri", dataChannelUri);
-      return this;
-    }
-
-    public APIRequestCreateExtension setName (String name) {
-      this.setParam("name", name);
-      return this;
-    }
-
-    public APIRequestCreateExtension requestAllFields () {
-      return this.requestAllFields(true);
-    }
-
-    public APIRequestCreateExtension requestAllFields (boolean value) {
-      for (String field : FIELDS) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateExtension requestFields (List<String> fields) {
-      return this.requestFields(fields, true);
-    }
-
-    @Override
-    public APIRequestCreateExtension requestFields (List<String> fields, boolean value) {
-      for (String field : fields) {
-        this.requestField(field, value);
-      }
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateExtension requestField (String field) {
-      this.requestField(field, true);
-      return this;
-    }
-
-    @Override
-    public APIRequestCreateExtension requestField (String field, boolean value) {
-      this.requestFieldInternal(field, value);
-      return this;
-    }
-
-  }
-
   public static class APIRequestGetFlows extends APIRequest<APINode> {
 
     APINodeList<APINode> lastResponse = null;
@@ -1511,6 +1277,7 @@ public class WhatsAppBusinessAccount extends APINode {
       return lastResponse;
     }
     public static final String[] PARAMS = {
+      "categories",
       "clone_flow_id",
       "clone_template",
       "data_channel_uri",
@@ -1572,6 +1339,15 @@ public class WhatsAppBusinessAccount extends APINode {
       return this;
     }
 
+
+    public APIRequestCreateFlow setCategories (List<EnumCategories> categories) {
+      this.setParam("categories", categories);
+      return this;
+    }
+    public APIRequestCreateFlow setCategories (String categories) {
+      this.setParam("categories", categories);
+      return this;
+    }
 
     public APIRequestCreateFlow setCloneFlowId (String cloneFlowId) {
       this.setParam("clone_flow_id", cloneFlowId);
@@ -4030,6 +3806,7 @@ public class WhatsAppBusinessAccount extends APINode {
       "country",
       "creation_time",
       "currency",
+      "health_status",
       "id",
       "is_enabled_for_insights",
       "message_template_namespace",
@@ -4173,6 +3950,13 @@ public class WhatsAppBusinessAccount extends APINode {
     }
     public APIRequestGet requestCurrencyField (boolean value) {
       this.requestField("currency", value);
+      return this;
+    }
+    public APIRequestGet requestHealthStatusField () {
+      return this.requestHealthStatusField(true);
+    }
+    public APIRequestGet requestHealthStatusField (boolean value) {
+      this.requestField("health_status", value);
       return this;
     }
     public APIRequestGet requestIdField () {
@@ -4384,8 +4168,16 @@ public class WhatsAppBusinessAccount extends APINode {
       VALUE_MANAGE_EXTENSIONS("MANAGE_EXTENSIONS"),
       @SerializedName("MANAGE_PHONE")
       VALUE_MANAGE_PHONE("MANAGE_PHONE"),
+      @SerializedName("MANAGE_PHONE_ASSETS")
+      VALUE_MANAGE_PHONE_ASSETS("MANAGE_PHONE_ASSETS"),
+      @SerializedName("MANAGE_TEMPLATES")
+      VALUE_MANAGE_TEMPLATES("MANAGE_TEMPLATES"),
       @SerializedName("VIEW_COST")
       VALUE_VIEW_COST("VIEW_COST"),
+      @SerializedName("VIEW_PHONE_ASSETS")
+      VALUE_VIEW_PHONE_ASSETS("VIEW_PHONE_ASSETS"),
+      @SerializedName("VIEW_TEMPLATES")
+      VALUE_VIEW_TEMPLATES("VIEW_TEMPLATES"),
       ;
 
       private String value;
@@ -4582,6 +4374,37 @@ public class WhatsAppBusinessAccount extends APINode {
       }
   }
 
+  public static enum EnumCategories {
+      @SerializedName("APPOINTMENT_BOOKING")
+      VALUE_APPOINTMENT_BOOKING("APPOINTMENT_BOOKING"),
+      @SerializedName("CONTACT_US")
+      VALUE_CONTACT_US("CONTACT_US"),
+      @SerializedName("CUSTOMER_SUPPORT")
+      VALUE_CUSTOMER_SUPPORT("CUSTOMER_SUPPORT"),
+      @SerializedName("LEAD_GENERATION")
+      VALUE_LEAD_GENERATION("LEAD_GENERATION"),
+      @SerializedName("OTHER")
+      VALUE_OTHER("OTHER"),
+      @SerializedName("SIGN_IN")
+      VALUE_SIGN_IN("SIGN_IN"),
+      @SerializedName("SIGN_UP")
+      VALUE_SIGN_UP("SIGN_UP"),
+      @SerializedName("SURVEY")
+      VALUE_SURVEY("SURVEY"),
+      ;
+
+      private String value;
+
+      private EnumCategories(String value) {
+        this.value = value;
+      }
+
+      @Override
+      public String toString() {
+        return value;
+      }
+  }
+
   public static enum EnumButtonTypes {
       @SerializedName("OTP")
       VALUE_OTP("OTP"),
@@ -4676,6 +4499,7 @@ public class WhatsAppBusinessAccount extends APINode {
     this.mCountry = instance.mCountry;
     this.mCreationTime = instance.mCreationTime;
     this.mCurrency = instance.mCurrency;
+    this.mHealthStatus = instance.mHealthStatus;
     this.mId = instance.mId;
     this.mIsEnabledForInsights = instance.mIsEnabledForInsights;
     this.mMessageTemplateNamespace = instance.mMessageTemplateNamespace;

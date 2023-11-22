@@ -5628,6 +5628,8 @@ public class Business extends APINode {
       "restrictions",
       "restrictive_data_filter_params",
       "restrictive_data_filter_rules",
+      "sdk_auto_logging_default_value",
+      "sdk_auto_logging_override_value",
       "sdk_update_message",
       "seamless_login",
       "secure_canvas_url",
@@ -6314,6 +6316,20 @@ public class Business extends APINode {
       this.requestField("restrictive_data_filter_rules", value);
       return this;
     }
+    public APIRequestGetClientApps requestSdkAutoLoggingDefaultValueField () {
+      return this.requestSdkAutoLoggingDefaultValueField(true);
+    }
+    public APIRequestGetClientApps requestSdkAutoLoggingDefaultValueField (boolean value) {
+      this.requestField("sdk_auto_logging_default_value", value);
+      return this;
+    }
+    public APIRequestGetClientApps requestSdkAutoLoggingOverrideValueField () {
+      return this.requestSdkAutoLoggingOverrideValueField(true);
+    }
+    public APIRequestGetClientApps requestSdkAutoLoggingOverrideValueField (boolean value) {
+      this.requestField("sdk_auto_logging_override_value", value);
+      return this;
+    }
     public APIRequestGetClientApps requestSdkUpdateMessageField () {
       return this.requestSdkUpdateMessageField(true);
     }
@@ -6729,6 +6745,7 @@ public class Business extends APINode {
       "directed_by",
       "display_subtext",
       "displayed_message_response_time",
+      "does_viewer_have_page_permission_link_ig",
       "emails",
       "engagement",
       "fan_count",
@@ -6743,6 +6760,7 @@ public class Business extends APINode {
       "global_brand_page_name",
       "global_brand_root_id",
       "has_added_app",
+      "has_lead_access",
       "has_transitioned_to_new_page_experience",
       "has_whatsapp_business_number",
       "has_whatsapp_enterprise_number_using_cloud_api",
@@ -6757,6 +6775,7 @@ public class Business extends APINode {
       "is_chain",
       "is_community_page",
       "is_eligible_for_branded_content",
+      "is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web",
       "is_messenger_bot_get_started_enabled",
       "is_messenger_platform_bot",
       "is_owned",
@@ -6776,7 +6795,6 @@ public class Business extends APINode {
       "merchant_review_status",
       "messaging_feature_status",
       "messenger_ads_default_icebreakers",
-      "messenger_ads_default_page_welcome_message",
       "messenger_ads_default_quick_replies",
       "messenger_ads_quick_replies_type",
       "mini_shop_storefront",
@@ -7190,6 +7208,13 @@ public class Business extends APINode {
       this.requestField("displayed_message_response_time", value);
       return this;
     }
+    public APIRequestGetClientPages requestDoesViewerHavePagePermissionLinkIgField () {
+      return this.requestDoesViewerHavePagePermissionLinkIgField(true);
+    }
+    public APIRequestGetClientPages requestDoesViewerHavePagePermissionLinkIgField (boolean value) {
+      this.requestField("does_viewer_have_page_permission_link_ig", value);
+      return this;
+    }
     public APIRequestGetClientPages requestEmailsField () {
       return this.requestEmailsField(true);
     }
@@ -7288,6 +7313,13 @@ public class Business extends APINode {
       this.requestField("has_added_app", value);
       return this;
     }
+    public APIRequestGetClientPages requestHasLeadAccessField () {
+      return this.requestHasLeadAccessField(true);
+    }
+    public APIRequestGetClientPages requestHasLeadAccessField (boolean value) {
+      this.requestField("has_lead_access", value);
+      return this;
+    }
     public APIRequestGetClientPages requestHasTransitionedToNewPageExperienceField () {
       return this.requestHasTransitionedToNewPageExperienceField(true);
     }
@@ -7384,6 +7416,13 @@ public class Business extends APINode {
     }
     public APIRequestGetClientPages requestIsEligibleForBrandedContentField (boolean value) {
       this.requestField("is_eligible_for_branded_content", value);
+      return this;
+    }
+    public APIRequestGetClientPages requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField () {
+      return this.requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField(true);
+    }
+    public APIRequestGetClientPages requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField (boolean value) {
+      this.requestField("is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web", value);
       return this;
     }
     public APIRequestGetClientPages requestIsMessengerBotGetStartedEnabledField () {
@@ -7517,13 +7556,6 @@ public class Business extends APINode {
     }
     public APIRequestGetClientPages requestMessengerAdsDefaultIcebreakersField (boolean value) {
       this.requestField("messenger_ads_default_icebreakers", value);
-      return this;
-    }
-    public APIRequestGetClientPages requestMessengerAdsDefaultPageWelcomeMessageField () {
-      return this.requestMessengerAdsDefaultPageWelcomeMessageField(true);
-    }
-    public APIRequestGetClientPages requestMessengerAdsDefaultPageWelcomeMessageField (boolean value) {
-      this.requestField("messenger_ads_default_page_welcome_message", value);
       return this;
     }
     public APIRequestGetClientPages requestMessengerAdsDefaultQuickRepliesField () {
@@ -8726,6 +8758,7 @@ public class Business extends APINode {
       "country",
       "creation_time",
       "currency",
+      "health_status",
       "id",
       "is_enabled_for_insights",
       "message_template_namespace",
@@ -8869,6 +8902,13 @@ public class Business extends APINode {
     }
     public APIRequestGetClientWhatsAppBusinessAccounts requestCurrencyField (boolean value) {
       this.requestField("currency", value);
+      return this;
+    }
+    public APIRequestGetClientWhatsAppBusinessAccounts requestHealthStatusField () {
+      return this.requestHealthStatusField(true);
+    }
+    public APIRequestGetClientWhatsAppBusinessAccounts requestHealthStatusField (boolean value) {
+      this.requestField("health_status", value);
       return this;
     }
     public APIRequestGetClientWhatsAppBusinessAccounts requestIdField () {
@@ -13356,6 +13396,7 @@ public class Business extends APINode {
       "sales_rep_email",
       "seller_external_website_url",
       "seller_targeting_countries",
+      "skip_partner_page_creation",
       "survey_business_type",
       "survey_num_assets",
       "survey_num_people",
@@ -13511,6 +13552,15 @@ public class Business extends APINode {
     }
     public APIRequestCreateManagedPartnerBusiness setSellerTargetingCountries (String sellerTargetingCountries) {
       this.setParam("seller_targeting_countries", sellerTargetingCountries);
+      return this;
+    }
+
+    public APIRequestCreateManagedPartnerBusiness setSkipPartnerPageCreation (Boolean skipPartnerPageCreation) {
+      this.setParam("skip_partner_page_creation", skipPartnerPageCreation);
+      return this;
+    }
+    public APIRequestCreateManagedPartnerBusiness setSkipPartnerPageCreation (String skipPartnerPageCreation) {
+      this.setParam("skip_partner_page_creation", skipPartnerPageCreation);
       return this;
     }
 
@@ -14221,6 +14271,8 @@ public class Business extends APINode {
       "access_key",
       "active",
       "endpoint",
+      "fallback_domain",
+      "fallback_domain_enabled",
       "host_business_id",
       "host_external_id",
       "id",
@@ -14337,6 +14389,20 @@ public class Business extends APINode {
       this.requestField("endpoint", value);
       return this;
     }
+    public APIRequestGetOpenBridgeConfigurations requestFallbackDomainField () {
+      return this.requestFallbackDomainField(true);
+    }
+    public APIRequestGetOpenBridgeConfigurations requestFallbackDomainField (boolean value) {
+      this.requestField("fallback_domain", value);
+      return this;
+    }
+    public APIRequestGetOpenBridgeConfigurations requestFallbackDomainEnabledField () {
+      return this.requestFallbackDomainEnabledField(true);
+    }
+    public APIRequestGetOpenBridgeConfigurations requestFallbackDomainEnabledField (boolean value) {
+      this.requestField("fallback_domain_enabled", value);
+      return this;
+    }
     public APIRequestGetOpenBridgeConfigurations requestHostBusinessIdField () {
       return this.requestHostBusinessIdField(true);
     }
@@ -14378,6 +14444,8 @@ public class Business extends APINode {
       "access_key",
       "active",
       "endpoint",
+      "fallback_domain",
+      "fallback_domain_enabled",
       "host_business_id",
       "host_external_id",
       "pixel_id",
@@ -14455,6 +14523,20 @@ public class Business extends APINode {
 
     public APIRequestCreateOpenBridgeConfiguration setEndpoint (String endpoint) {
       this.setParam("endpoint", endpoint);
+      return this;
+    }
+
+    public APIRequestCreateOpenBridgeConfiguration setFallbackDomain (String fallbackDomain) {
+      this.setParam("fallback_domain", fallbackDomain);
+      return this;
+    }
+
+    public APIRequestCreateOpenBridgeConfiguration setFallbackDomainEnabled (Boolean fallbackDomainEnabled) {
+      this.setParam("fallback_domain_enabled", fallbackDomainEnabled);
+      return this;
+    }
+    public APIRequestCreateOpenBridgeConfiguration setFallbackDomainEnabled (String fallbackDomainEnabled) {
+      this.setParam("fallback_domain_enabled", fallbackDomainEnabled);
       return this;
     }
 
@@ -15384,6 +15466,8 @@ public class Business extends APINode {
       "restrictions",
       "restrictive_data_filter_params",
       "restrictive_data_filter_rules",
+      "sdk_auto_logging_default_value",
+      "sdk_auto_logging_override_value",
       "sdk_update_message",
       "seamless_login",
       "secure_canvas_url",
@@ -16068,6 +16152,20 @@ public class Business extends APINode {
     }
     public APIRequestGetOwnedApps requestRestrictiveDataFilterRulesField (boolean value) {
       this.requestField("restrictive_data_filter_rules", value);
+      return this;
+    }
+    public APIRequestGetOwnedApps requestSdkAutoLoggingDefaultValueField () {
+      return this.requestSdkAutoLoggingDefaultValueField(true);
+    }
+    public APIRequestGetOwnedApps requestSdkAutoLoggingDefaultValueField (boolean value) {
+      this.requestField("sdk_auto_logging_default_value", value);
+      return this;
+    }
+    public APIRequestGetOwnedApps requestSdkAutoLoggingOverrideValueField () {
+      return this.requestSdkAutoLoggingOverrideValueField(true);
+    }
+    public APIRequestGetOwnedApps requestSdkAutoLoggingOverrideValueField (boolean value) {
+      this.requestField("sdk_auto_logging_override_value", value);
       return this;
     }
     public APIRequestGetOwnedApps requestSdkUpdateMessageField () {
@@ -17263,6 +17361,7 @@ public class Business extends APINode {
       "directed_by",
       "display_subtext",
       "displayed_message_response_time",
+      "does_viewer_have_page_permission_link_ig",
       "emails",
       "engagement",
       "fan_count",
@@ -17277,6 +17376,7 @@ public class Business extends APINode {
       "global_brand_page_name",
       "global_brand_root_id",
       "has_added_app",
+      "has_lead_access",
       "has_transitioned_to_new_page_experience",
       "has_whatsapp_business_number",
       "has_whatsapp_enterprise_number_using_cloud_api",
@@ -17291,6 +17391,7 @@ public class Business extends APINode {
       "is_chain",
       "is_community_page",
       "is_eligible_for_branded_content",
+      "is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web",
       "is_messenger_bot_get_started_enabled",
       "is_messenger_platform_bot",
       "is_owned",
@@ -17310,7 +17411,6 @@ public class Business extends APINode {
       "merchant_review_status",
       "messaging_feature_status",
       "messenger_ads_default_icebreakers",
-      "messenger_ads_default_page_welcome_message",
       "messenger_ads_default_quick_replies",
       "messenger_ads_quick_replies_type",
       "mini_shop_storefront",
@@ -17724,6 +17824,13 @@ public class Business extends APINode {
       this.requestField("displayed_message_response_time", value);
       return this;
     }
+    public APIRequestGetOwnedPages requestDoesViewerHavePagePermissionLinkIgField () {
+      return this.requestDoesViewerHavePagePermissionLinkIgField(true);
+    }
+    public APIRequestGetOwnedPages requestDoesViewerHavePagePermissionLinkIgField (boolean value) {
+      this.requestField("does_viewer_have_page_permission_link_ig", value);
+      return this;
+    }
     public APIRequestGetOwnedPages requestEmailsField () {
       return this.requestEmailsField(true);
     }
@@ -17822,6 +17929,13 @@ public class Business extends APINode {
       this.requestField("has_added_app", value);
       return this;
     }
+    public APIRequestGetOwnedPages requestHasLeadAccessField () {
+      return this.requestHasLeadAccessField(true);
+    }
+    public APIRequestGetOwnedPages requestHasLeadAccessField (boolean value) {
+      this.requestField("has_lead_access", value);
+      return this;
+    }
     public APIRequestGetOwnedPages requestHasTransitionedToNewPageExperienceField () {
       return this.requestHasTransitionedToNewPageExperienceField(true);
     }
@@ -17918,6 +18032,13 @@ public class Business extends APINode {
     }
     public APIRequestGetOwnedPages requestIsEligibleForBrandedContentField (boolean value) {
       this.requestField("is_eligible_for_branded_content", value);
+      return this;
+    }
+    public APIRequestGetOwnedPages requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField () {
+      return this.requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField(true);
+    }
+    public APIRequestGetOwnedPages requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField (boolean value) {
+      this.requestField("is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web", value);
       return this;
     }
     public APIRequestGetOwnedPages requestIsMessengerBotGetStartedEnabledField () {
@@ -18051,13 +18172,6 @@ public class Business extends APINode {
     }
     public APIRequestGetOwnedPages requestMessengerAdsDefaultIcebreakersField (boolean value) {
       this.requestField("messenger_ads_default_icebreakers", value);
-      return this;
-    }
-    public APIRequestGetOwnedPages requestMessengerAdsDefaultPageWelcomeMessageField () {
-      return this.requestMessengerAdsDefaultPageWelcomeMessageField(true);
-    }
-    public APIRequestGetOwnedPages requestMessengerAdsDefaultPageWelcomeMessageField (boolean value) {
-      this.requestField("messenger_ads_default_page_welcome_message", value);
       return this;
     }
     public APIRequestGetOwnedPages requestMessengerAdsDefaultQuickRepliesField () {
@@ -18512,6 +18626,7 @@ public class Business extends APINode {
     }
     public static final String[] PARAMS = {
       "code",
+      "entry_point",
       "page_id",
     };
 
@@ -18573,6 +18688,11 @@ public class Business extends APINode {
 
     public APIRequestCreateOwnedPage setCode (String code) {
       this.setParam("code", code);
+      return this;
+    }
+
+    public APIRequestCreateOwnedPage setEntryPoint (String entryPoint) {
+      this.setParam("entry_point", entryPoint);
       return this;
     }
 
@@ -19448,6 +19568,7 @@ public class Business extends APINode {
       "country",
       "creation_time",
       "currency",
+      "health_status",
       "id",
       "is_enabled_for_insights",
       "message_template_namespace",
@@ -19591,6 +19712,13 @@ public class Business extends APINode {
     }
     public APIRequestGetOwnedWhatsAppBusinessAccounts requestCurrencyField (boolean value) {
       this.requestField("currency", value);
+      return this;
+    }
+    public APIRequestGetOwnedWhatsAppBusinessAccounts requestHealthStatusField () {
+      return this.requestHealthStatusField(true);
+    }
+    public APIRequestGetOwnedWhatsAppBusinessAccounts requestHealthStatusField (boolean value) {
+      this.requestField("health_status", value);
       return this;
     }
     public APIRequestGetOwnedWhatsAppBusinessAccounts requestIdField () {
@@ -23531,6 +23659,7 @@ public class Business extends APINode {
       return lastResponse;
     }
     public static final String[] PARAMS = {
+      "entry_point",
       "name",
       "primary_page",
       "timezone_id",
@@ -23593,6 +23722,11 @@ public class Business extends APINode {
       return this;
     }
 
+
+    public APIRequestUpdate setEntryPoint (String entryPoint) {
+      this.setParam("entry_point", entryPoint);
+      return this;
+    }
 
     public APIRequestUpdate setName (String name) {
       this.setParam("name", name);

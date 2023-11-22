@@ -387,6 +387,7 @@ public class AdReportRun extends APINode {
       "catalog_segment_value_omni_purchase_roas",
       "catalog_segment_value_website_purchase_roas",
       "clicks",
+      "conversion_lead_rate",
       "conversion_rate_ranking",
       "conversion_values",
       "conversions",
@@ -397,6 +398,7 @@ public class AdReportRun extends APINode {
       "cost_per_action_type",
       "cost_per_ad_click",
       "cost_per_conversion",
+      "cost_per_conversion_lead",
       "cost_per_dda_countby_convs",
       "cost_per_estimated_ad_recallers",
       "cost_per_inline_link_click",
@@ -784,6 +786,13 @@ public class AdReportRun extends APINode {
       this.requestField("clicks", value);
       return this;
     }
+    public APIRequestGetInsights requestConversionLeadRateField () {
+      return this.requestConversionLeadRateField(true);
+    }
+    public APIRequestGetInsights requestConversionLeadRateField (boolean value) {
+      this.requestField("conversion_lead_rate", value);
+      return this;
+    }
     public APIRequestGetInsights requestConversionRateRankingField () {
       return this.requestConversionRateRankingField(true);
     }
@@ -852,6 +861,13 @@ public class AdReportRun extends APINode {
     }
     public APIRequestGetInsights requestCostPerConversionField (boolean value) {
       this.requestField("cost_per_conversion", value);
+      return this;
+    }
+    public APIRequestGetInsights requestCostPerConversionLeadField () {
+      return this.requestCostPerConversionLeadField(true);
+    }
+    public APIRequestGetInsights requestCostPerConversionLeadField (boolean value) {
+      this.requestField("cost_per_conversion_lead", value);
       return this;
     }
     public APIRequestGetInsights requestCostPerDdaCountbyConvsField () {
@@ -1853,6 +1869,8 @@ public class AdReportRun extends APINode {
       VALUE_LINK_URL_ASSET("link_url_asset"),
       @SerializedName("marketing_messages_btn_name")
       VALUE_MARKETING_MESSAGES_BTN_NAME("marketing_messages_btn_name"),
+      @SerializedName("mdsa_landing_destination")
+      VALUE_MDSA_LANDING_DESTINATION("mdsa_landing_destination"),
       @SerializedName("media_asset_url")
       VALUE_MEDIA_ASSET_URL("media_asset_url"),
       @SerializedName("media_creator")

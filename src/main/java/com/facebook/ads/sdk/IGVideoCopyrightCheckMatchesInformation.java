@@ -39,33 +39,25 @@ import com.facebook.ads.sdk.APIException.MalformedResponseException;
  * pull request for this class.
  *
  */
-public class AdCreativeBrandedContentAds extends APINode {
-  @SerializedName("ad_format")
-  private Long mAdFormat = null;
-  @SerializedName("creator_ad_permission_type")
-  private String mCreatorAdPermissionType = null;
-  @SerializedName("instagram_boost_post_access_token")
-  private String mInstagramBoostPostAccessToken = null;
-  @SerializedName("is_mca_internal")
-  private Boolean mIsMcaInternal = null;
-  @SerializedName("partners")
-  private List<Object> mPartners = null;
-  @SerializedName("ui_version")
-  private Long mUiVersion = null;
+public class IGVideoCopyrightCheckMatchesInformation extends APINode {
+  @SerializedName("copyright_matches")
+  private List<Object> mCopyrightMatches = null;
+  @SerializedName("status")
+  private IGVideoCopyrightCheckStatus mStatus = null;
   protected static Gson gson = null;
 
-  public AdCreativeBrandedContentAds() {
+  public IGVideoCopyrightCheckMatchesInformation() {
   }
 
   public String getId() {
     return null;
   }
-  public static AdCreativeBrandedContentAds loadJSON(String json, APIContext context, String header) {
-    AdCreativeBrandedContentAds adCreativeBrandedContentAds = getGson().fromJson(json, AdCreativeBrandedContentAds.class);
+  public static IGVideoCopyrightCheckMatchesInformation loadJSON(String json, APIContext context, String header) {
+    IGVideoCopyrightCheckMatchesInformation igVideoCopyrightCheckMatchesInformation = getGson().fromJson(json, IGVideoCopyrightCheckMatchesInformation.class);
     if (context.isDebug()) {
       JsonParser parser = new JsonParser();
       JsonElement o1 = parser.parse(json);
-      JsonElement o2 = parser.parse(adCreativeBrandedContentAds.toString());
+      JsonElement o2 = parser.parse(igVideoCopyrightCheckMatchesInformation.toString());
       if (o1.getAsJsonObject().get("__fb_trace_id__") != null) {
         o2.getAsJsonObject().add("__fb_trace_id__", o1.getAsJsonObject().get("__fb_trace_id__"));
       }
@@ -75,14 +67,14 @@ public class AdCreativeBrandedContentAds extends APINode {
         context.log("[Object]" + o2);
       }
     }
-    adCreativeBrandedContentAds.context = context;
-    adCreativeBrandedContentAds.rawValue = json;
-    adCreativeBrandedContentAds.header = header;
-    return adCreativeBrandedContentAds;
+    igVideoCopyrightCheckMatchesInformation.context = context;
+    igVideoCopyrightCheckMatchesInformation.rawValue = json;
+    igVideoCopyrightCheckMatchesInformation.header = header;
+    return igVideoCopyrightCheckMatchesInformation;
   }
 
-  public static APINodeList<AdCreativeBrandedContentAds> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
-    APINodeList<AdCreativeBrandedContentAds> adCreativeBrandedContentAdss = new APINodeList<AdCreativeBrandedContentAds>(request, json, header);
+  public static APINodeList<IGVideoCopyrightCheckMatchesInformation> parseResponse(String json, APIContext context, APIRequest request, String header) throws MalformedResponseException {
+    APINodeList<IGVideoCopyrightCheckMatchesInformation> igVideoCopyrightCheckMatchesInformations = new APINodeList<IGVideoCopyrightCheckMatchesInformation>(request, json, header);
     JsonArray arr;
     JsonObject obj;
     JsonParser parser = new JsonParser();
@@ -93,9 +85,9 @@ public class AdCreativeBrandedContentAds extends APINode {
         // First, check if it's a pure JSON Array
         arr = result.getAsJsonArray();
         for (int i = 0; i < arr.size(); i++) {
-          adCreativeBrandedContentAdss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+          igVideoCopyrightCheckMatchesInformations.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
         };
-        return adCreativeBrandedContentAdss;
+        return igVideoCopyrightCheckMatchesInformations;
       } else if (result.isJsonObject()) {
         obj = result.getAsJsonObject();
         if (obj.has("data")) {
@@ -105,20 +97,20 @@ public class AdCreativeBrandedContentAds extends APINode {
                 JsonObject cursors = paging.get("cursors").getAsJsonObject();
                 String before = cursors.has("before") ? cursors.get("before").getAsString() : null;
                 String after = cursors.has("after") ? cursors.get("after").getAsString() : null;
-                adCreativeBrandedContentAdss.setCursors(before, after);
+                igVideoCopyrightCheckMatchesInformations.setCursors(before, after);
             }
             String previous = paging.has("previous") ? paging.get("previous").getAsString() : null;
             String next = paging.has("next") ? paging.get("next").getAsString() : null;
-            adCreativeBrandedContentAdss.setPaging(previous, next);
+            igVideoCopyrightCheckMatchesInformations.setPaging(previous, next);
             if (context.hasAppSecret()) {
-              adCreativeBrandedContentAdss.setAppSecret(context.getAppSecretProof());
+              igVideoCopyrightCheckMatchesInformations.setAppSecret(context.getAppSecretProof());
             }
           }
           if (obj.get("data").isJsonArray()) {
             // Second, check if it's a JSON array with "data"
             arr = obj.get("data").getAsJsonArray();
             for (int i = 0; i < arr.size(); i++) {
-              adCreativeBrandedContentAdss.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
+              igVideoCopyrightCheckMatchesInformations.add(loadJSON(arr.get(i).getAsJsonObject().toString(), context, header));
             };
           } else if (obj.get("data").isJsonObject()) {
             // Third, check if it's a JSON object with "data"
@@ -129,23 +121,23 @@ public class AdCreativeBrandedContentAds extends APINode {
                 isRedownload = true;
                 obj = obj.getAsJsonObject(s);
                 for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-                  adCreativeBrandedContentAdss.add(loadJSON(entry.getValue().toString(), context, header));
+                  igVideoCopyrightCheckMatchesInformations.add(loadJSON(entry.getValue().toString(), context, header));
                 }
                 break;
               }
             }
             if (!isRedownload) {
-              adCreativeBrandedContentAdss.add(loadJSON(obj.toString(), context, header));
+              igVideoCopyrightCheckMatchesInformations.add(loadJSON(obj.toString(), context, header));
             }
           }
-          return adCreativeBrandedContentAdss;
+          return igVideoCopyrightCheckMatchesInformations;
         } else if (obj.has("images")) {
           // Fourth, check if it's a map of image objects
           obj = obj.get("images").getAsJsonObject();
           for (Map.Entry<String, JsonElement> entry : obj.entrySet()) {
-              adCreativeBrandedContentAdss.add(loadJSON(entry.getValue().toString(), context, header));
+              igVideoCopyrightCheckMatchesInformations.add(loadJSON(entry.getValue().toString(), context, header));
           }
-          return adCreativeBrandedContentAdss;
+          return igVideoCopyrightCheckMatchesInformations;
         } else {
           // Fifth, check if it's an array of objects indexed by id
           boolean isIdIndexedArray = true;
@@ -162,20 +154,20 @@ public class AdCreativeBrandedContentAds extends APINode {
               value.getAsJsonObject().get("id") != null &&
               value.getAsJsonObject().get("id").getAsString().equals(key)
             ) {
-              adCreativeBrandedContentAdss.add(loadJSON(value.toString(), context, header));
+              igVideoCopyrightCheckMatchesInformations.add(loadJSON(value.toString(), context, header));
             } else {
               isIdIndexedArray = false;
               break;
             }
           }
           if (isIdIndexedArray) {
-            return adCreativeBrandedContentAdss;
+            return igVideoCopyrightCheckMatchesInformations;
           }
 
           // Sixth, check if it's pure JsonObject
-          adCreativeBrandedContentAdss.clear();
-          adCreativeBrandedContentAdss.add(loadJSON(json, context, header));
-          return adCreativeBrandedContentAdss;
+          igVideoCopyrightCheckMatchesInformations.clear();
+          igVideoCopyrightCheckMatchesInformations.add(loadJSON(json, context, header));
+          return igVideoCopyrightCheckMatchesInformations;
         }
       }
     } catch (Exception e) {
@@ -203,60 +195,29 @@ public class AdCreativeBrandedContentAds extends APINode {
   }
 
 
-  public Long getFieldAdFormat() {
-    return mAdFormat;
+  public List<Object> getFieldCopyrightMatches() {
+    return mCopyrightMatches;
   }
 
-  public AdCreativeBrandedContentAds setFieldAdFormat(Long value) {
-    this.mAdFormat = value;
+  public IGVideoCopyrightCheckMatchesInformation setFieldCopyrightMatches(List<Object> value) {
+    this.mCopyrightMatches = value;
     return this;
   }
 
-  public String getFieldCreatorAdPermissionType() {
-    return mCreatorAdPermissionType;
+  public IGVideoCopyrightCheckStatus getFieldStatus() {
+    return mStatus;
   }
 
-  public AdCreativeBrandedContentAds setFieldCreatorAdPermissionType(String value) {
-    this.mCreatorAdPermissionType = value;
+  public IGVideoCopyrightCheckMatchesInformation setFieldStatus(IGVideoCopyrightCheckStatus value) {
+    this.mStatus = value;
     return this;
   }
 
-  public String getFieldInstagramBoostPostAccessToken() {
-    return mInstagramBoostPostAccessToken;
-  }
-
-  public AdCreativeBrandedContentAds setFieldInstagramBoostPostAccessToken(String value) {
-    this.mInstagramBoostPostAccessToken = value;
+  public IGVideoCopyrightCheckMatchesInformation setFieldStatus(String value) {
+    Type type = new TypeToken<IGVideoCopyrightCheckStatus>(){}.getType();
+    this.mStatus = IGVideoCopyrightCheckStatus.getGson().fromJson(value, type);
     return this;
   }
-
-  public Boolean getFieldIsMcaInternal() {
-    return mIsMcaInternal;
-  }
-
-  public AdCreativeBrandedContentAds setFieldIsMcaInternal(Boolean value) {
-    this.mIsMcaInternal = value;
-    return this;
-  }
-
-  public List<Object> getFieldPartners() {
-    return mPartners;
-  }
-
-  public AdCreativeBrandedContentAds setFieldPartners(List<Object> value) {
-    this.mPartners = value;
-    return this;
-  }
-
-  public Long getFieldUiVersion() {
-    return mUiVersion;
-  }
-
-  public AdCreativeBrandedContentAds setFieldUiVersion(Long value) {
-    this.mUiVersion = value;
-    return this;
-  }
-
 
 
 
@@ -273,22 +234,18 @@ public class AdCreativeBrandedContentAds extends APINode {
     return gson;
   }
 
-  public AdCreativeBrandedContentAds copyFrom(AdCreativeBrandedContentAds instance) {
-    this.mAdFormat = instance.mAdFormat;
-    this.mCreatorAdPermissionType = instance.mCreatorAdPermissionType;
-    this.mInstagramBoostPostAccessToken = instance.mInstagramBoostPostAccessToken;
-    this.mIsMcaInternal = instance.mIsMcaInternal;
-    this.mPartners = instance.mPartners;
-    this.mUiVersion = instance.mUiVersion;
+  public IGVideoCopyrightCheckMatchesInformation copyFrom(IGVideoCopyrightCheckMatchesInformation instance) {
+    this.mCopyrightMatches = instance.mCopyrightMatches;
+    this.mStatus = instance.mStatus;
     this.context = instance.context;
     this.rawValue = instance.rawValue;
     return this;
   }
 
-  public static APIRequest.ResponseParser<AdCreativeBrandedContentAds> getParser() {
-    return new APIRequest.ResponseParser<AdCreativeBrandedContentAds>() {
-      public APINodeList<AdCreativeBrandedContentAds> parseResponse(String response, APIContext context, APIRequest<AdCreativeBrandedContentAds> request, String header) throws MalformedResponseException {
-        return AdCreativeBrandedContentAds.parseResponse(response, context, request, header);
+  public static APIRequest.ResponseParser<IGVideoCopyrightCheckMatchesInformation> getParser() {
+    return new APIRequest.ResponseParser<IGVideoCopyrightCheckMatchesInformation>() {
+      public APINodeList<IGVideoCopyrightCheckMatchesInformation> parseResponse(String response, APIContext context, APIRequest<IGVideoCopyrightCheckMatchesInformation> request, String header) throws MalformedResponseException {
+        return IGVideoCopyrightCheckMatchesInformation.parseResponse(response, context, request, header);
       }
     };
   }

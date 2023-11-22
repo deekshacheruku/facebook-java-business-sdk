@@ -1342,6 +1342,7 @@ public class LiveVideo extends APINode {
       "directed_by",
       "display_subtext",
       "displayed_message_response_time",
+      "does_viewer_have_page_permission_link_ig",
       "emails",
       "engagement",
       "fan_count",
@@ -1356,6 +1357,7 @@ public class LiveVideo extends APINode {
       "global_brand_page_name",
       "global_brand_root_id",
       "has_added_app",
+      "has_lead_access",
       "has_transitioned_to_new_page_experience",
       "has_whatsapp_business_number",
       "has_whatsapp_enterprise_number_using_cloud_api",
@@ -1370,6 +1372,7 @@ public class LiveVideo extends APINode {
       "is_chain",
       "is_community_page",
       "is_eligible_for_branded_content",
+      "is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web",
       "is_messenger_bot_get_started_enabled",
       "is_messenger_platform_bot",
       "is_owned",
@@ -1389,7 +1392,6 @@ public class LiveVideo extends APINode {
       "merchant_review_status",
       "messaging_feature_status",
       "messenger_ads_default_icebreakers",
-      "messenger_ads_default_page_welcome_message",
       "messenger_ads_default_quick_replies",
       "messenger_ads_quick_replies_type",
       "mini_shop_storefront",
@@ -1803,6 +1805,13 @@ public class LiveVideo extends APINode {
       this.requestField("displayed_message_response_time", value);
       return this;
     }
+    public APIRequestGetCrosspostSharedPages requestDoesViewerHavePagePermissionLinkIgField () {
+      return this.requestDoesViewerHavePagePermissionLinkIgField(true);
+    }
+    public APIRequestGetCrosspostSharedPages requestDoesViewerHavePagePermissionLinkIgField (boolean value) {
+      this.requestField("does_viewer_have_page_permission_link_ig", value);
+      return this;
+    }
     public APIRequestGetCrosspostSharedPages requestEmailsField () {
       return this.requestEmailsField(true);
     }
@@ -1901,6 +1910,13 @@ public class LiveVideo extends APINode {
       this.requestField("has_added_app", value);
       return this;
     }
+    public APIRequestGetCrosspostSharedPages requestHasLeadAccessField () {
+      return this.requestHasLeadAccessField(true);
+    }
+    public APIRequestGetCrosspostSharedPages requestHasLeadAccessField (boolean value) {
+      this.requestField("has_lead_access", value);
+      return this;
+    }
     public APIRequestGetCrosspostSharedPages requestHasTransitionedToNewPageExperienceField () {
       return this.requestHasTransitionedToNewPageExperienceField(true);
     }
@@ -1997,6 +2013,13 @@ public class LiveVideo extends APINode {
     }
     public APIRequestGetCrosspostSharedPages requestIsEligibleForBrandedContentField (boolean value) {
       this.requestField("is_eligible_for_branded_content", value);
+      return this;
+    }
+    public APIRequestGetCrosspostSharedPages requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField () {
+      return this.requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField(true);
+    }
+    public APIRequestGetCrosspostSharedPages requestIsEligibleForDisableConnectIgBtnForNonPageAdminAmWebField (boolean value) {
+      this.requestField("is_eligible_for_disable_connect_ig_btn_for_non_page_admin_am_web", value);
       return this;
     }
     public APIRequestGetCrosspostSharedPages requestIsMessengerBotGetStartedEnabledField () {
@@ -2130,13 +2153,6 @@ public class LiveVideo extends APINode {
     }
     public APIRequestGetCrosspostSharedPages requestMessengerAdsDefaultIcebreakersField (boolean value) {
       this.requestField("messenger_ads_default_icebreakers", value);
-      return this;
-    }
-    public APIRequestGetCrosspostSharedPages requestMessengerAdsDefaultPageWelcomeMessageField () {
-      return this.requestMessengerAdsDefaultPageWelcomeMessageField(true);
-    }
-    public APIRequestGetCrosspostSharedPages requestMessengerAdsDefaultPageWelcomeMessageField (boolean value) {
-      this.requestField("messenger_ads_default_page_welcome_message", value);
       return this;
     }
     public APIRequestGetCrosspostSharedPages requestMessengerAdsDefaultQuickRepliesField () {
